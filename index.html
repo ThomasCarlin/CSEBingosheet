@@ -181,3 +181,1003 @@ blog: /2013/04/09/mixing-jquery-ui-draggable-droppable-and-sortable-interaction-
             }
       });
 </script>
+=======
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex">
+  <title> CSE Bingo by ThomasCarlin</title>
+  
+  
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+
+
+  
+  
+  <style>
+    ul{
+    list-style:none;
+    padding:0;
+    min-height:12em;
+    margin-top:0;
+}
+#semester{
+    float:left;
+    margin:0px;
+    border:1px solid black;
+    width:100%;
+    padding:0;
+    
+}
+div{
+  padding-right:0;
+  padding-left:0;
+}
+h3{
+  background-color:#e6e6e6;
+  border-bottom:1px solid black;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+#pre{
+  background-color:#CCFFCC;
+}
+#GEC{
+  background-color: #FF9ACC;
+}
+#abet{
+  background-color: #FFFF9A;
+}
+#tech{
+  background-color: #CCFFFF;
+}
+#semesterDiv{
+  padding:0;
+  min-height: 100%;
+}
+#classID{
+  min-width:20%;
+  padding-left: 5px;
+}
+#className{
+  min-width: 70%;
+}
+#classCredit{
+  min-width: 10%;
+  text-align: right;
+  padding-right: 20px;
+}
+#core{
+  background-color: #FFCC9A;
+}
+table{
+  min-width: 100%;
+}
+  </style>
+  
+
+</head>
+<body>
+  <div class="row">
+    <div id="semesterDiv" class="col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-2">
+      <div id="semester">
+        <table>
+          <tr>
+            <td>
+              <h3>Autumn (1st) Semester</h3>
+            </td>
+            <td id="Credits1">
+              <h3></h3>
+            </td>
+          </tr>
+        </table>
+      <ul id="semester1">
+          <li id="pre">
+            <table>
+              <tr>
+                <td id="classID">
+                  Engr 1100
+                </td>
+                <td id="className">
+                  Engineering Survey
+                </td>
+                <td id="classCredit">
+                  1
+                </td>
+              </tr>
+            </table>
+
+          </li>
+          <li id="pre">
+            <table>
+              <tr>
+                <td id="classID">
+                  Engr 1181
+                </td>
+                <td id="className">
+                  Introduction to Engineering I
+                </td>
+                <td id="classCredit">
+                  2
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li id="pre">
+            <table>
+              <tr>
+                <td id="classID">
+                  Math 1151
+                </td>
+                <td id="className">
+                  Calculus I
+                </td>
+                <td id="classCredit">
+                  5
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li id="pre">
+            <table>
+              <tr>
+                <td id="classID">
+                  Phys 1250
+                </td>
+                <td id="className">
+                  Physics I
+                </td>
+                <td id="classCredit">
+                  5
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li id="GEC">
+            <table>
+              <tr>
+                <td id="classID">
+                  CSE 1223
+                </td>
+                <td id="className">
+                  Introduction to Programming: Java
+                </td>
+                <td id="classCredit">
+                  2
+                </td>
+              </tr>
+            </table>
+          </li>
+      </ul>
+      </div>
+    </div>
+    <div id="semesterDiv" class="col-sm-5 col-md-4">
+      <div id="semester">
+        <table>
+          <tr>
+            <td>
+              <h3>Spring (2nd) Semester</h3>
+            </td>
+            <td id="Credits2">
+              <h3></h3>
+            </td>
+          </tr>
+        </table>
+      <ul id="semester2">
+          <li id="core">
+            <table>
+              <tr>
+                <td id="classID">
+                  CSE 2221
+                </td>
+                <td id="className">
+                  Software I
+                </td>
+                <td id="classCredit">
+                  4
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li id="pre">
+            <table>
+              <tr>
+                <td id="classID">
+                  Engr 1182
+                </td>
+                <td id="className">
+                  Introduction to Engineering II
+                </td>
+                <td id="classCredit">
+                  2
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li id="pre">
+            <table>
+              <tr>
+                <td id="classID">
+                  Math 1172
+                </td>
+                <td id="className">
+                  Engineering Calculus II
+                </td>
+                <td id="classCredit">
+                  5
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li id="GEC">
+            <table>
+              <tr>
+                <td id="classID">
+                  Gen Ed
+                </td>
+                <td id="className">
+                  Writing Level 1
+                </td>
+                <td id="classCredit">
+                  3
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li id="GEC">
+            <table>
+              <tr>
+                <td id="classID">
+                  Gen Ed
+                </td>
+                <td id="className">
+                  Culture & Ideas: Ethics
+                </td>
+                <td id="classCredit">
+                  3
+                </td>
+              </tr>
+            </table>
+          </li>
+      </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div id="semesterDiv" class="col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-2">
+      <div id="semester">
+        <table>
+          <tr>
+            <td>
+              <h3>Autumn (3rd) Semester</h3>
+            </td>
+            <td id="Credits3">
+              <h3></h3>
+            </td>
+          </tr>
+        </table>      <ul id="semester3">
+        <li id="core">
+            <table>
+              <tr>
+                <td id="classID">
+                  CSE 2231
+                </td>
+                <td id="className">
+                  Software II
+                </td>
+                <td id="classCredit">
+                  4
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li id="core">
+            <table>
+              <tr>
+                <td id="classID">
+                  CSE 2321
+                </td>
+                <td id="className">
+                  Foundations I
+                </td>
+                <td id="classCredit">
+                  3
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li id="abet">
+            <table>
+              <tr>
+                <td id="classID">
+                  Stat 3470
+                </td>
+                <td id="className">
+                  Probability and Statistics
+                </td>
+                <td id="classCredit">
+                  3
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li id="abet">
+            <table>
+              <tr>
+                <td id="classID">
+                  Math 2568
+                </td>
+                <td id="className">
+                  Linear Algebra
+                </td>
+                <td id="classCredit">
+                  3
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li id="abet">
+            <table>
+              <tr>
+                <td id="classID">
+                  Science
+                </td>
+                <td id="className">
+                  Science Elective: Bio, Chem, or Phy
+                </td>
+                <td id="classCredit">
+                  5
+                </td>
+              </tr>
+            </table>
+          </li>
+      </ul>
+      </div>
+    </div>
+    <div id="semesterDiv" class="col-sm-5 col-md-4">
+      <div id="semester">
+        <table>
+          <tr>
+            <td>
+              <h3>Spring (4th) Semester</h3>
+            </td>
+            <td id="Credits4">
+              <h3></h3>
+            </td>
+          </tr>
+        </table>
+        <ul id="semester4">
+          <li id="core">
+            <table>
+              <tr>
+                <td id="classID">
+                  CSE 2331
+                </td>
+                <td id="className">
+                  Foundations II
+                </td>
+                <td id="classCredit">
+                  3
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li id="core">
+            <table>
+              <tr>
+                <td id="classID">
+                  CSE 2421
+                </td>
+                <td id="className">
+                  Systems I
+                </td>
+                <td id="classCredit">
+                  4
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li id="abet">
+            <table>
+              <tr>
+                <td id="classID">
+                  ECE 2060 
+                </td>
+                <td id="className">
+                  Electrical and Computer Engineering
+                </td>
+                <td id="classCredit">
+                  3
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li id="abet">
+            <table>
+              <tr>
+                <td id="classID">
+                  Math 3345
+                </td>
+                <td id="className">
+                  Discrete Mathematics: Logic
+                </td>
+                <td id="classCredit">
+                  3
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li id="GEC">
+            <table>
+              <tr>
+                <td id="classID">
+                  Gen Ed
+                </td>
+                <td id="className">
+                  Writing Level 2
+                </td>
+                <td id="classCredit">
+                  3
+                </td>
+              </tr>
+            </table>
+          </li>
+      </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div id="semesterDiv" class="col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-2">
+      <div id="semester">
+        <table>
+          <tr>
+            <td>
+              <h3>Autumn (5th) Semester</h3>
+            </td>
+            <td id="Credits5">
+              <h3></h3>
+            </td>
+          </tr>
+        </table>      <ul id="semester5">
+          <li id="core">
+            <table>
+              <tr>
+                <td id="classID">
+                  CSE 2431
+                </td>
+                <td id="className">
+                  Systems II
+                </td>
+                <td id="classCredit">
+                  3
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li id="core">
+            <table>
+              <tr>
+                <td id="classID">
+                  CSE 390x
+                </td>
+                <td id="className">
+                  Project
+                </td>
+                <td id="classCredit">
+                  4
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li id="abet">
+            <table>
+              <tr>
+                <td id="classID">
+                  ECE 2020
+                </td>
+                <td id="className">
+                  Electric and Computer Engineering
+                </td>
+                <td id="classCredit">
+                  3
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li id="GEC">
+            <table>
+              <tr>
+                <td id="classID">
+                  Gen Ed
+                </td>
+                <td id="className">
+                  Social Science 1
+                </td>
+                <td id="classCredit">
+                  3
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li id="GEC">
+            <table>
+              <tr>
+                <td id="classID">
+                  Gen Ed
+                </td>
+                <td id="className">
+                  Arts
+                </td>
+                <td id="classCredit">
+                  3
+                </td>
+              </tr>
+            </table>
+          </li>
+      </ul>
+      </div>
+    </div>
+    <div id="semesterDiv" class="col-sm-5 col-md-4">
+      <div id="semester">
+        <table>
+          <tr>
+            <td>
+              <h3>Spring (6th) Semester</h3>
+            </td>
+            <td id="Credits6">
+              <h3></h3>
+            </td>
+          </tr>
+        </table>
+        <ul id="semester6">
+          <li id="core">
+            <table>
+              <tr>
+                <td id="classID">
+                  CSE 32x1
+                </td>
+                <td id="className">
+                  Software: Software Eng or Database
+                </td>
+                <td id="classCredit">
+                  3
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li id="core">
+            <table>
+              <tr>
+                <td id="classID">
+                  CSE 34x1
+                </td>
+                <td id="className">
+                  Systems: Architecture or Networks
+                </td>
+                <td id="classCredit">
+                  3
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li id="core">
+            <table>
+              <tr>
+                <td id="classID">
+                  CSE 35x1
+                </td>
+                <td id="className">
+                  Applications: AI or Graphics
+                </td>
+                <td id="classCredit">
+                  3
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li id="core">
+            <table>
+              <tr>
+                <td id="classID">
+                  CSE 2501
+                </td>
+                <td id="className">
+                  Professionalism and Ethics
+                </td>
+                <td id="classCredit">
+                  1
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li id="tech">
+            <table>
+              <tr>
+                <td id="classID">
+                  
+                </td>
+                <td id="className">
+                  Technical Elective
+                </td>
+                <td id="classCredit">
+                  3
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li id="GEC">
+            <table>
+              <tr>
+                <td id="classID">
+                  Gen Ed 
+                </td>
+                <td id="className">
+                  Historical Study
+                </td>
+                <td id="classCredit">
+                  3
+                </td>
+              </tr>
+            </table>
+          </li>
+      </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div id="semesterDiv" class="col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-2">
+      <div id="semester">
+        <table>
+          <tr>
+            <td>
+              <h3>Autumn (7th) Semester</h3>
+            </td>
+            <td id="Credits7">
+              <h3></h3>
+            </td>
+          </tr>
+        </table>      
+        <ul id="semester7">
+          <li id="core">
+            <table>
+              <tr>
+                <td id="classID">
+                  CSE 33x1
+                </td>
+                <td id="className">
+                  Foundations: Theory or Prog Lang
+                </td>
+                <td id="classCredit">
+                  3
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li id="abet">
+            <table>
+              <tr>
+                <td id="classID">
+                  Math/Stat
+                </td>
+                <td id="className">
+                  Mathematics/Statistics Elective
+                </td>
+                <td id="classCredit">
+                  3
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li id="tech">
+            <table>
+              <tr>
+                <td id="classID">
+                  
+                </td>
+                <td id="className">
+                  Technical Elective
+                </td>
+                <td id="classCredit">
+                  3
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li id="tech">
+            <table>
+              <tr>
+                <td id="classID">
+                  
+                </td>
+                <td id="className">
+                  Technical Elective
+                </td>
+                <td id="classCredit">
+                  3
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li id="GEC">
+            <table>
+              <tr>
+                <td id="classID">
+                  Gen Ed
+                </td>
+                <td id="className">
+                  Literature
+                </td>
+                <td id="classCredit">
+                  3
+                </td>
+              </tr>
+            </table>
+          </li>
+      </ul>
+      </div>
+    </div>
+    <div id="semesterDiv" class="col-sm-5 col-md-4">
+      <div id="semester">
+        <table>
+          <tr>
+            <td>
+              <h3>Spring (8th) Semester</h3>
+            </td>
+            <td id="Credits8">
+              <h3></h3>
+            </td>
+          </tr>
+        </table>
+        <ul id="semester8">
+          <li id="core">
+            <table>
+              <tr>
+                <td id="classID">
+                  CSE 591x
+                </td>
+                <td id="className">
+                  Capstone Design
+                </td>
+                <td id="classCredit">
+                  4
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li id="tech">
+            <table>
+              <tr>
+                <td id="classID">
+                  
+                </td>
+                <td id="className">
+                  Technical Elective
+                </td>
+                <td id="classCredit">
+                  3
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li id="tech">
+            <table>
+              <tr>
+                <td id="classID">
+                  
+                </td>
+                <td id="className">
+                  Technical Elective
+                </td>
+                <td id="classCredit">
+                  3
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li id="tech">
+            <table>
+              <tr>
+                <td id="classID">
+                  
+                </td>
+                <td id="className">
+                  Technical Elective
+                </td>
+                <td id="classCredit">
+                  2
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li id="GEC">
+            <table>
+              <tr>
+                <td id="classID">
+                  Gen Ed
+                </td>
+                <td id="className">
+                  Social Science 2
+                </td>
+                <td id="classCredit">
+                  3
+                </td>
+              </tr>
+            </table>
+          </li>
+
+      </ul>
+      </div>
+    </div>
+  </div>
+  
+</body>
+
+</html>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  var count = 0;
+  $("#semester1").find('li').each(function(){
+    var current = parseInt($(this).find("#classCredit").text(),10);
+    count += current;
+  });
+  $("#Credits1 h3").html(count);
+  var count = 0;
+  $("#semester2").find('li').each(function(){
+    var current = parseInt($(this).find("#classCredit").text(),10);
+    count += current;
+  });
+  $("#Credits2 h3").html(count);
+  var count = 0;
+  $("#semester3").find('li').each(function(){
+    var current = parseInt($(this).find("#classCredit").text(),10);
+    count += current;
+  });
+  $("#Credits3 h3").html(count);
+  var count = 0;
+  $("#semester4").find('li').each(function(){
+    var current = parseInt($(this).find("#classCredit").text(),10);
+    count += current;
+  });
+  $("#Credits4 h3").html(count);
+  var count = 0;
+  $("#semester5").find('li').each(function(){
+    var current = parseInt($(this).find("#classCredit").text(),10);
+    count += current;
+  });
+  $("#Credits5 h3").html(count);
+  var count = 0;
+  $("#semester6").find('li').each(function(){
+    var current = parseInt($(this).find("#classCredit").text(),10);
+    count += current;
+  });
+  $("#Credits6 h3").html(count);
+  var count = 0;
+  $("#semester7").find('li').each(function(){
+    var current = parseInt($(this).find("#classCredit").text(),10);
+    count += current;
+  });
+  $("#Credits7 h3").html(count);
+  var count = 0;
+  $("#semester8").find('li').each(function(){
+    var current = parseInt($(this).find("#classCredit").text(),10);
+    count += current;
+  });
+  $("#Credits8 h3").html(count);
+});
+$("#semester1").sortable({
+    connectWith: "#semester1, #semester2, #semester3, #semester4, #semester5, #semester6, #semester7, #semester8",
+    update: function() {
+      var count = 0;
+      $("#semester1").find('li').each(function(){
+        var current = parseInt($(this).find("#classCredit").text(),10);
+        count += current;
+      });
+      $("#Credits1 h3").html(count);
+    }
+});
+$("#semester2").sortable({
+    connectWith: "#semester1, #semester2, #semester3, #semester4, #semester5, #semester6, #semester7, #semester8",
+    update: function() {
+      var count = 0;
+      $("#semester2").find('li').each(function(){
+        var current = parseInt($(this).find("#classCredit").text(),10);
+        count += current;
+      });
+      $("#Credits2 h3").html(count);
+    }
+});
+$("#semester3").sortable({
+    connectWith: "#semester1, #semester2, #semester3, #semester4, #semester5, #semester6, #semester7, #semester8",
+    update: function() {
+      var count = 0;
+      $("#semester3").find('li').each(function(){
+        var current = parseInt($(this).find("#classCredit").text(),10);
+        count += current;
+      });
+      $("#Credits3 h3").html(count);
+    }
+});
+$("#semester4").sortable({
+    connectWith: "#semester1, #semester2, #semester3, #semester4, #semester5, #semester6, #semester7, #semester8",
+    update: function() {
+      var count = 0;
+      $("#semester4").find('li').each(function(){
+        var current = parseInt($(this).find("#classCredit").text(),10);
+        count += current;
+      });
+      $("#Credits4 h3").html(count);
+    }
+});
+$("#semester4").sortable({
+    connectWith: "#semester1, #semester2, #semester3, #semester4, #semester5, #semester6, #semester7, #semester8",
+    update: function() {
+      var count = 0;
+      $("#semester4").find('li').each(function(){
+        var current = parseInt($(this).find("#classCredit").text(),10);
+        count += current;
+      });
+      $("#Credits4 h3").html(count);
+    }
+});
+$("#semester5").sortable({
+    connectWith: "#semester1, #semester2, #semester3, #semester4, #semester5, #semester6, #semester7, #semester8",
+    update: function() {
+      var count = 0;
+      $("#semester5").find('li').each(function(){
+        var current = parseInt($(this).find("#classCredit").text(),10);
+        count += current;
+      });
+      $("#Credits5 h3").html(count);
+    }
+});
+$("#semester6").sortable({
+    connectWith: "#semester1, #semester2, #semester3, #semester4, #semester5, #semester6, #semester7, #semester8",
+    update: function() {
+      var count = 0;
+      $("#semester6").find('li').each(function(){
+        var current = parseInt($(this).find("#classCredit").text(),10);
+        count += current;
+      });
+      $("#Credits6 h3").html(count);
+    }
+});
+$("#semester7").sortable({
+    connectWith: "#semester1, #semester2, #semester3, #semester4, #semester5, #semester6, #semester7, #semester8",
+    update: function() {
+      var count = 0;
+      $("#semester7").find('li').each(function(){
+        var current = parseInt($(this).find("#classCredit").text(),10);
+        count += current;
+      });
+      $("#Credits7 h3").html(count);
+    }
+});
+$("#semester8").sortable({
+    connectWith: "#semester1, #semester2, #semester3, #semester4, #semester5, #semester6, #semester7, #semester8",
+    update: function() {
+      var count = 0;
+      $("#semester8").find('li').each(function(){
+        var current = parseInt($(this).find("#classCredit").text(),10);
+        count += current;
+      });
+      $("#Credits8 h3").html(count);
+    }
+});
+
+
+$("#semester1 li").dblclick(function(ev){
+    $(this).prependTo("#selected-files");
+});
+
+</script>
