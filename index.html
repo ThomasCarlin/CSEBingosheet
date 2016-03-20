@@ -76,6 +76,12 @@ h3{
 #core{
   background-color: #FFCC9A;
 }
+#notAvailable{
+  background-color: #ffb3b3;
+}
+#available{
+  background-color: #CCFFFF;
+}
 table{
   min-width: 100%;
 }
@@ -84,6 +90,9 @@ table{
 
 </head>
 <body>
+  <div id="alertes" class="row">
+
+  </div>
   <div class="row">
     <div id="semesterDiv" class="col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-2">
       <div id="semester">
@@ -163,7 +172,7 @@ table{
             <table>
               <tr>
                 <td id="classID">
-                  CSE 1223
+                  <div id="cse1223" >CSE 1223 </div>
                 </td>
                 <td id="className">
                   Introduction to Programming: Java
@@ -194,7 +203,7 @@ table{
             <table>
               <tr>
                 <td id="classID">
-                  CSE 2221
+                  <div id="cse2221"  >CSE 2221 </div>
                 </td>
                 <td id="className">
                   Software I
@@ -835,12 +844,21 @@ table{
       </div>
     </div>
   </div>
-  
 </body>
 
 </html>
 
 <script type="text/javascript">
+  function checkClassReq(a){
+      $("#Credits1 h3").html($("#cse1223").parents('ul').attr('id').replace(/\D/g,''));
+      $("#Credits1 h3").html("FUCK");
+      var cse1223 = parseInt($("#cse1223").parents('ul').attr('id').replace(/\D/g,''));
+      var cse2221 = parseInt($("#cse2221").parents('ul').attr('id').replace(/\D/g,''));
+      if(cse2221 > cse1223){
+        $("#alertes").innerhtml("<p>
+          </p>");
+      }
+  }
 $(document).ready(function(){
   var count = 0;
   $("#semester1").find('li').each(function(){
@@ -890,6 +908,7 @@ $(document).ready(function(){
     count += current;
   });
   $("#Credits8 h3").html(count);
+  checkClassReq("wat");
 });
 $("#semester1").sortable({
     connectWith: "#semester1, #semester2, #semester3, #semester4, #semester5, #semester6, #semester7, #semester8",
