@@ -16,11 +16,211 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <script src="http://code.jquery.com/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+<script type="text/javascript">
+  var CLASSTAKENCOLOR = "#CCFFCC";
+  var CLASSAVAILABLECOLOR = "#FFFF9A";
+  var CLASSUNAVAILABLECOLOR = "#D3D3D3";
+  function Class(name,bingo,list,reqs) {
+    this.namel = name;
+    this.bingo = bingo;
+    this.list = list;
+    this.isTaken = false;
+    if(typeof reqs !== "undefined") { this.reqs == reqs;}
+  }
+  function IsClassTaken(classTemp)
+  {
+    if(typeof classTemp !== "undefined")
+    {
+      return classTemp.isTaken;
+    }
+  }
+  function AreReqsTaken(classTemp)
+  {
+    var isTaken = true;
+    if(classTemp.reqs == null)
+    {
+      return true;
+    }
+    else
+    {
+      for(var i = 0 ; i< classTemp.reqs.length; i++)
+      {
+        if(!IsClassTaken(classTemp.reqs[i]))
+        {
+          isTaken = false;
+        }
+      }
+    }
+    return isTaken;
+  }
+  function MakeClassAvailable(classTemp)
+  {
+     classTemp.list.style.backgroundColor = CLASSAVAILABLECOLOR;
+  }
+  function MakeClassUnavailable(classTemp)
+  {
+    classTemp.list.style.backgroundColor = CLASSUNAVAILABLECOLOR;
+  }
+  function MakeClassTaken(classTemp)
+  {
+    classTemp.list.style.backgroundColor = CLASSTAKENCOLOR;
+  }
+  function TakeClass(classTemp)
+  {
+    classTemp.isTaken = true;
+  }
+  function UpdateClasses(classList)
+  {
+    for(var classCounter = 0 ; classCounter< classList.length; classCounter++)
+      {
+        var classTemp = classList[classCounter]
+        if(AreReqsTaken(classTemp))
+        {
+          if(!classTemp.isTaken)
+          {
+            MakeClassAvailable(classTemp);
+          } 
+          else
+          {
+            MakeClassTaken(classTemp);
+          }     
+        }
+        else
+        {
+          MakeClassUnavailable(classTemp);
+        }
+      }
+  }
+  function registerHandlers() {
+    var class1223 = {bingo:document.getElementById("class-1223"),list:document.getElementById("options-1223")};
+    var class1100 = {bingo:document.getElementById("class-1100"),list:document.getElementById("options-1100")};
+    var class1181 = {bingo:document.getElementById("class-1181"),list:document.getElementById("options-1181")};
+    var class1151 = {bingo:document.getElementById("class-1151"),list:document.getElementById("options-1151")};
+    var class1250 = {bingo:document.getElementById("class-1250"),list:document.getElementById("options-1250")};
+    var class2221 = {bingo:document.getElementById("class-2221"),list:document.getElementById("options-2221"),reqs:[class1223,class1151]}
+    var class2231 = {bingo:document.getElementById("class-2231"),list:document.getElementById("options-2231"),reqs:[class2221]}
+    var class2321 = {bingo:document.getElementById("class-2321"),list:document.getElementById("options-2321"),reqs:[class2221,class1151]}
+    var class1182 = {bingo:document.getElementById("class-1182"),list:document.getElementById("options-1182"),reqs:[class1181]}
+    var class1172 = {bingo:document.getElementById("class-1172"),list:document.getElementById("options-1172"),reqs:[class1151]}
+    var classWL1 = {bingo:document.getElementById("class-WL1"),list:document.getElementById("options-WL1")}
+    var classCAIE = {bingo:document.getElementById("class-CAIE"),list:document.getElementById("options-CAIE")}
+    var class3470 = {bingo:document.getElementById("class-3470"),list:document.getElementById("options-3470"),reqs:[class1172]}
+    var class2568 = {bingo:document.getElementById("class-2568"),list:document.getElementById("options-2568"),reqs:[class1172]}
+    var classSCE = {bingo:document.getElementById("class-SCE"),list:document.getElementById("options-SCE")}
+    var class2331 = {bingo:document.getElementById("class-2331"),list:document.getElementById("options-2331"),reqs:[class2321,class2231,class3470]}
+    var class2421 = {bingo:document.getElementById("class-2421"),list:document.getElementById("options-2421"),reqs:[class2231,class2321]}
+    var class2431 = {bingo:document.getElementById("class-2431"),list:document.getElementById("options-2431"),reqs:[class2421]}
+    var classWL2 = {bingo:document.getElementById("class-WL2"),list:document.getElementById("options-WL2"),reqs:[classWL1]}
+    var class390x = {bingo:document.getElementById("class-390x"),list:document.getElementById("options-390x"),reqs:[class2421,class2231,class2321,classWL2]}
+    var class3241 = {bingo:document.getElementById("class-32x1"),list:document.getElementById("options-3241"),reqs:[class2231,class2321]}
+    var class3231 = {bingo:document.getElementById("class-32x1"),list:document.getElementById("options-3231"),reqs:[class390x]}
+    var class3461 = {bingo:document.getElementById("class-34x1"),list:document.getElementById("options-3461"),reqs:[class2421]}
+    var class2060 = {bingo:document.getElementById("class-2060"),list:document.getElementById("options-2060"),reqs:[class2221,class1172,class1250,class1182]}
+    var class2020 = {bingo:document.getElementById("class-2020"),list:document.getElementById("options-2020"),reqs:[class2221,class1182,class1172,class1250]}
+    var class3421 = {bingo:document.getElementById("class-34x1"),list:document.getElementById("options-3421"),reqs:[class2421,class2060,class2231]}
+    var class3521 = {bingo:document.getElementById("class-35x1"),list:document.getElementById("options-3521"),reqs:[class2331]}
+    var class3541 = {bingo:document.getElementById("class-35x1"),list:document.getElementById("options-3541"),reqs:[class390x]}
+    var class2501 = {bingo:document.getElementById("class-2501"),list:document.getElementById("options-2501"),reqs:[class2231,class2321,class2421]}
+    var class3321 = {bingo:document.getElementById("class-33x1"),list:document.getElementById("options-3321"),reqs:[class2231,class2331,class2421]}
+    var class3341 = {bingo:document.getElementById("class-33x1"),list:document.getElementById("options-3341"),reqs:[class2231,class2331,class2421,class390x]}
+    var class5911 = {bingo:document.getElementById("class-591x"),list:document.getElementById("options-5911"),reqs:[class2501,class390x,class3231]}
+    var class5912 = {bingo:document.getElementById("class-591x"),list:document.getElementById("options-5912"),reqs:[class2501,class390x,class3541]}
+    var class5913 = {bingo:document.getElementById("class-591x"),list:document.getElementById("options-5913"),reqs:[class2501,class390x,class3541]}
+    var class5914 = {bingo:document.getElementById("class-591x"),list:document.getElementById("options-5914"),reqs:[class2501,class390x,class3521]}
+    var class5915 = {bingo:document.getElementById("class-591x"),list:document.getElementById("options-5915"),reqs:[class2501,class390x,class3241]}
+    var class3345 = {bingo:document.getElementById("class-3345"),list:document.getElementById("options-3345"),reqs:[class2321,class1172]}
+    var classSS1 = {bingo:document.getElementById("class-SS1"),list:document.getElementById("options-SS1")}
+    var classART = {bingo:document.getElementById("class-ART"),list:document.getElementById("options-ART")}
+    var classSS2 = {bingo:document.getElementById("class-SS2"),list:document.getElementById("options-SS2")}
+    var classHIS = {bingo:document.getElementById("class-HIS"),list:document.getElementById("options-HIS")}
+    var classLIT = {bingo:document.getElementById("class-LIT"),list:document.getElementById("options-LIT")}
+    var classMSE = {bingo:document.getElementById("class-MSE"),list:document.getElementById("options-MSE")}
+    var class3232 = {list: document.getElementById("options-3232"), reqs:[class390x]}
+    var class4251 = {list: document.getElementById("options-4251"),reqs:[class2231]}
+    var class4252 = {list: document.getElementById("options-4252"),reqs:[class2231]}
+    var class4253 = {list: document.getElementById("options-4253"),reqs:[class2231]}
+    var class4254 = {list: document.getElementById("options-4254"),reqs:[class2231]}
+    var class4255 = {list: document.getElementById("options-4255"),reqs:[class2231]}
+    var class4471 = {list: document.getElementById("options-4471"),reqs:[class2231,class2321]}
+    var class5234 = {list: document.getElementById("options-5234"),reqs:[class2431]}
+    var class5235 = {list: document.getElementById("options-5235"),reqs:[class5911]}
+    var class5236 = {list: document.getElementById("options-5236"),reqs:[class390x]}
+    var class5242 = {list: document.getElementById("options-5242"),reqs:[class3241]}
+    var class5243 = {list: document.getElementById("options-5243"),reqs:[class2331,class3241]}
+    var class5245 = {list: document.getElementById("options-5245"),reqs:[class2331]}
+    var class5343 = {list: document.getElementById("options-5343"),reqs:[class390x,class3341]}
+    var class5351 = {list: document.getElementById("options-5351"),reqs:[class3470,class2331]}
+    var class5361 = {list: document.getElementById("options-5361"),reqs:[class2231,class2568]}
+    var class5462 = {list: document.getElementById("options-5462"),reqs:[class3461]}
+    var class5463 = {list: document.getElementById("options-5463"),reqs:[class3461]}
+    var class5472 = {list: document.getElementById("options-5472"),reqs:[class390x,class3461]}
+    var class5473 = {list: document.getElementById("options-5473"),reqs:[class3461]}
+    var class5522 = {list: document.getElementById("options-5522"),reqs:[class3521]}
+    var class5523 = {list: document.getElementById("options-5523"),reqs:[class3521, class3470]}
+    var class5524 = {list: document.getElementById("options-5524"),reqs:[class2331]}
+    var class5525 = {list: document.getElementById("options-5525"),reqs:[class3521,class3470]}
+    var class5526 = {list: document.getElementById("options-5526"),reqs:[class3521]}
+    var class5531 = {list: document.getElementById("options-5531")}
+    var class5542 = {list: document.getElementById("options-5542"),reqs:[class390x,class2568]}
+    var class5543 = {list: document.getElementById("options-5543"),reqs:[class2568]}
+    var class5544 = {list: document.getElementById("options-5544"),reqs:[class5361]}
 
+
+
+
+    var classList = [class1223,class1100,class1181,class1151,class1250,class2221,class1182,class1172,classWL1,classCAIE,class2231,class2321,class3470,class2568,classSCE,class2331,class2421,class2431,classWL2,class390x,class3241,class3231,class3461,class3421,class3521,class3541,class2501,class3321,class2060,class3345,class2020,classSS1,classSS2,classART,classHIS,classMSE,classLIT,class3341,class5911,class5912,class5913,class5914,class5915,class3232,class4251,class4252,class4253,class4254,class4255,class4471,class5234,class5235,class5236,class5242,class5243,class5245,class5343,class5351,class5361,class5462,class5463,class5472,class5473,class5522,class5523,class5524,class5525,class5526,class5531,class5542,class5543,class5544];
+
+    for(var classCounter = 0 ; classCounter< classList.length; classCounter++)
+      {(function () {
+        var classTemp = classList[classCounter]
+        if(AreReqsTaken(classTemp))
+        {
+          MakeClassAvailable(classTemp);
+        }
+        else
+        {
+          MakeClassUnavailable(classTemp);
+        }
+        classTemp.list.addEventListener (
+        "click", 
+        function () {
+          UpdateClass(classTemp,classList);
+        },
+        false);
+        }());
+      }
+  }
+  function UpdateClass(classTemp,classList)
+  {
+    if(classTemp.isTaken)
+    {
+      classTemp.isTaken = !classTemp.isTaken;
+      UpdateClasses(classList);
+    }
+    else if(AreReqsTaken(classTemp))
+    {
+      TakeClass(classTemp);
+      UpdateClasses(classList);
+    }
+    UpdateBingo(classTemp);
+  }
+  function UpdateBingo(classTemp)
+  {
+    if(classTemp.isTaken)
+      {
+        classTemp.bingo.style.backgroundColor = CLASSUNAVAILABLECOLOR;
+      }
+    else
+      {
+        classTemp.bingo.style.backgroundColor = "";
+      }
+  }
+  window.addEventListener ("load", registerHandlers, false);
+</script>
 
   
   
-  <style>
+<style>
     ul{
     list-style:none;
     padding:0;
@@ -76,23 +276,22 @@ h3{
 #core{
   background-color: #FFCC9A;
 }
-#notAvailable{
-  background-color: #ffb3b3;
-}
-#available{
-  background-color: #CCFFFF;
-}
 table{
   min-width: 100%;
 }
-  </style>
+.options-table{
+  table-layout:fixed;
+  width: 100%;
+  border: 1px solid black;
+}
+table.options-table tr {
+  border: 1px solid black;
+}
+</style>
   
 
 </head>
 <body>
-  <div id="alertes" class="row">
-
-  </div>
   <div class="row">
     <div id="semesterDiv" class="col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-2">
       <div id="semester">
@@ -109,7 +308,7 @@ table{
       <ul id="semester1">
           <li id="pre">
             <table>
-              <tr>
+              <tr id="class-1100">
                 <td id="classID">
                   Engr 1100
                 </td>
@@ -125,7 +324,7 @@ table{
           </li>
           <li id="pre">
             <table>
-              <tr>
+              <tr id="class-1181">
                 <td id="classID">
                   Engr 1181
                 </td>
@@ -140,7 +339,7 @@ table{
           </li>
           <li id="pre">
             <table>
-              <tr>
+              <tr id="class-1151">
                 <td id="classID">
                   Math 1151
                 </td>
@@ -155,7 +354,7 @@ table{
           </li>
           <li id="pre">
             <table>
-              <tr>
+              <tr id="class-1250">
                 <td id="classID">
                   Phys 1250
                 </td>
@@ -170,9 +369,9 @@ table{
           </li>
           <li id="GEC">
             <table>
-              <tr>
+              <tr id="class-1223">
                 <td id="classID">
-                  <div id="cse1223" >CSE 1223 </div>
+                  CSE 1223
                 </td>
                 <td id="className">
                   Introduction to Programming: Java
@@ -201,9 +400,9 @@ table{
       <ul id="semester2">
           <li id="core">
             <table>
-              <tr>
+              <tr id="class-2221">
                 <td id="classID">
-                  <div id="cse2221"  >CSE 2221 </div>
+                  CSE 2221
                 </td>
                 <td id="className">
                   Software I
@@ -216,7 +415,7 @@ table{
           </li>
           <li id="pre">
             <table>
-              <tr>
+              <tr id="class-1182">
                 <td id="classID">
                   Engr 1182
                 </td>
@@ -231,7 +430,7 @@ table{
           </li>
           <li id="pre">
             <table>
-              <tr>
+              <tr id="class-1172">
                 <td id="classID">
                   Math 1172
                 </td>
@@ -246,7 +445,7 @@ table{
           </li>
           <li id="GEC">
             <table>
-              <tr>
+              <tr id="class-WL1">
                 <td id="classID">
                   Gen Ed
                 </td>
@@ -261,7 +460,7 @@ table{
           </li>
           <li id="GEC">
             <table>
-              <tr>
+              <tr id="class-CAIE">
                 <td id="classID">
                   Gen Ed
                 </td>
@@ -293,7 +492,7 @@ table{
         </table>      <ul id="semester3">
         <li id="core">
             <table>
-              <tr>
+              <tr id="class-2231">
                 <td id="classID">
                   CSE 2231
                 </td>
@@ -308,7 +507,7 @@ table{
           </li>
           <li id="core">
             <table>
-              <tr>
+              <tr id="class-2321">
                 <td id="classID">
                   CSE 2321
                 </td>
@@ -323,7 +522,7 @@ table{
           </li>
           <li id="abet">
             <table>
-              <tr>
+              <tr id="class-3470">
                 <td id="classID">
                   Stat 3470
                 </td>
@@ -338,7 +537,7 @@ table{
           </li>
           <li id="abet">
             <table>
-              <tr>
+              <tr id="class-2568">
                 <td id="classID">
                   Math 2568
                 </td>
@@ -353,7 +552,7 @@ table{
           </li>
           <li id="abet">
             <table>
-              <tr>
+              <tr id="class-SCE">
                 <td id="classID">
                   Science
                 </td>
@@ -384,7 +583,7 @@ table{
         <ul id="semester4">
           <li id="core">
             <table>
-              <tr>
+              <tr id="class-2331">
                 <td id="classID">
                   CSE 2331
                 </td>
@@ -399,7 +598,7 @@ table{
           </li>
           <li id="core">
             <table>
-              <tr>
+              <tr id="class-2421">
                 <td id="classID">
                   CSE 2421
                 </td>
@@ -414,7 +613,7 @@ table{
           </li>
           <li id="abet">
             <table>
-              <tr>
+              <tr id="class-2060">
                 <td id="classID">
                   ECE 2060 
                 </td>
@@ -429,7 +628,7 @@ table{
           </li>
           <li id="abet">
             <table>
-              <tr>
+              <tr id="class-3345">
                 <td id="classID">
                   Math 3345
                 </td>
@@ -444,7 +643,7 @@ table{
           </li>
           <li id="GEC">
             <table>
-              <tr>
+              <tr id="class-WL2">
                 <td id="classID">
                   Gen Ed
                 </td>
@@ -476,7 +675,7 @@ table{
         </table>      <ul id="semester5">
           <li id="core">
             <table>
-              <tr>
+              <tr id="class-2431">
                 <td id="classID">
                   CSE 2431
                 </td>
@@ -491,7 +690,7 @@ table{
           </li>
           <li id="core">
             <table>
-              <tr>
+              <tr id="class-390x">
                 <td id="classID">
                   CSE 390x
                 </td>
@@ -506,7 +705,7 @@ table{
           </li>
           <li id="abet">
             <table>
-              <tr>
+              <tr id="class-2020">
                 <td id="classID">
                   ECE 2020
                 </td>
@@ -521,7 +720,7 @@ table{
           </li>
           <li id="GEC">
             <table>
-              <tr>
+              <tr id="class-SS1">
                 <td id="classID">
                   Gen Ed
                 </td>
@@ -536,7 +735,7 @@ table{
           </li>
           <li id="GEC">
             <table>
-              <tr>
+              <tr id="class-ART">
                 <td id="classID">
                   Gen Ed
                 </td>
@@ -567,7 +766,7 @@ table{
         <ul id="semester6">
           <li id="core">
             <table>
-              <tr>
+              <tr id="class-32x1">
                 <td id="classID">
                   CSE 32x1
                 </td>
@@ -582,7 +781,7 @@ table{
           </li>
           <li id="core">
             <table>
-              <tr>
+              <tr id="class-34x1">
                 <td id="classID">
                   CSE 34x1
                 </td>
@@ -597,7 +796,7 @@ table{
           </li>
           <li id="core">
             <table>
-              <tr>
+              <tr id="class-35x1">
                 <td id="classID">
                   CSE 35x1
                 </td>
@@ -612,7 +811,7 @@ table{
           </li>
           <li id="core">
             <table>
-              <tr>
+              <tr id="class-2501">
                 <td id="classID">
                   CSE 2501
                 </td>
@@ -627,7 +826,7 @@ table{
           </li>
           <li id="tech">
             <table>
-              <tr>
+              <tr id="class-TE1">
                 <td id="classID">
                   
                 </td>
@@ -642,7 +841,7 @@ table{
           </li>
           <li id="GEC">
             <table>
-              <tr>
+              <tr id="class-HIS">
                 <td id="classID">
                   Gen Ed 
                 </td>
@@ -675,7 +874,7 @@ table{
         <ul id="semester7">
           <li id="core">
             <table>
-              <tr>
+              <tr id="class-33x1">
                 <td id="classID">
                   CSE 33x1
                 </td>
@@ -690,7 +889,7 @@ table{
           </li>
           <li id="abet">
             <table>
-              <tr>
+              <tr id="class-MSE">
                 <td id="classID">
                   Math/Stat
                 </td>
@@ -705,7 +904,7 @@ table{
           </li>
           <li id="tech">
             <table>
-              <tr>
+              <tr id="class-TE2">
                 <td id="classID">
                   
                 </td>
@@ -720,7 +919,7 @@ table{
           </li>
           <li id="tech">
             <table>
-              <tr>
+              <tr id="class-TE3">
                 <td id="classID">
                   
                 </td>
@@ -735,7 +934,7 @@ table{
           </li>
           <li id="GEC">
             <table>
-              <tr>
+              <tr id="class-LIT">
                 <td id="classID">
                   Gen Ed
                 </td>
@@ -766,7 +965,7 @@ table{
         <ul id="semester8">
           <li id="core">
             <table>
-              <tr>
+              <tr id="class-591x">
                 <td id="classID">
                   CSE 591x
                 </td>
@@ -781,7 +980,7 @@ table{
           </li>
           <li id="tech">
             <table>
-              <tr>
+              <tr id="class-TE4">
                 <td id="classID">
                   
                 </td>
@@ -796,7 +995,7 @@ table{
           </li>
           <li id="tech">
             <table>
-              <tr>
+              <tr id="class-TE5">
                 <td id="classID">
                   
                 </td>
@@ -811,7 +1010,7 @@ table{
           </li>
           <li id="tech">
             <table>
-              <tr>
+              <tr id="class-TE6">
                 <td id="classID">
                   
                 </td>
@@ -826,7 +1025,7 @@ table{
           </li>
           <li id="GEC">
             <table>
-              <tr>
+              <tr id="class-SS2">
                 <td id="classID">
                   Gen Ed
                 </td>
@@ -844,21 +1043,1265 @@ table{
       </div>
     </div>
   </div>
+  <br>
+  <div class="row">   
+    <div id="semesterDiv" class="col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-2">
+        <table class="options-table">
+          <tr>
+            <th>
+              Course ID
+            </th>
+            <th>
+              Title
+            </th>
+            <th>
+              Cr-hrs
+            </th>
+            <th>
+              Reqs
+            </th>
+            <th>
+              Co-reqs
+            </th>
+          </tr>
+          <tr class="options" id="options-1223">
+            <td>
+              CSE 1223
+            </td>
+            <td>
+              Intro to Programming
+            </td>
+            <td>
+              2
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-2221">
+            <td>
+              CSE 2221
+            </td>
+            <td>
+              Software I
+            </td>
+            <td>
+              4
+            </td>
+            <td>
+              CSE 1223 or equiv., Math 1151 or equiv
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-2231">
+            <td>
+              CSE 2231
+            </td>
+            <td>
+              Software II
+            </td>
+            <td>
+              4
+            </td>
+            <td>
+              CSE 2221
+            </td>
+            <td>
+              CSE 2321
+            </td>
+          </tr>
+          <tr class="options" id="options-2321">
+            <td>
+              CSE 2321
+            </td>
+            <td>
+              Foundations I
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 2221 or equiv., Math 1151 or equiv
+            </td>
+            <td>
+              CSE 2231
+            </td>
+          </tr>
+          <tr class="options" id="options-2331">
+            <td>
+              CSE 2331
+            </td>
+            <td>
+              Foundations II
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 2231, CSE 2321, STAT 3470
+            </td>
+            <td>
+              MATH 3345
+            </td>
+          </tr>
+          <tr class="options" id="options-2421">
+            <td>
+              CSE 2421
+            </td>
+            <td>
+              Systems I
+            </td>
+            <td>
+              4
+            </td>
+            <td>
+              CSE 2231, CSE 2321
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-2431">
+            <td>
+              CSE 2431
+            </td>
+            <td>
+              Systems II
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 2421
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-390x">
+            <td>
+              CSE 390x
+            </td>
+            <td>
+              Project
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 2231, CSE 2321, CSE 2421, Writing Level 2
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-3241">
+            <td>
+              CSE 3241
+            </td>
+            <td>
+              Databases
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 2231, CSE 2321
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-3231">
+            <td>
+              CSE 3231
+            </td>
+            <td>
+              Software Engineering
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 390x
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-3461">
+            <td>
+              CSE 3461
+            </td>
+            <td>
+              Computer Networking
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 2421
+            </td>
+            <td>
+              CSE 2431
+            </td>
+          </tr>
+          <tr class="options" id="options-3421">
+            <td>
+              CSE 3421
+            </td>
+            <td>
+              Intro to Comp. Architecture
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 2231, CSE 2421, ECE 2060?
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-3521">
+            <td>
+              CSE 3521
+            </td>
+            <td>
+              Artificial Intelligence I
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 2331 or Senior
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-3541">
+            <td>
+              CSE 3541
+            </td>
+            <td>
+              Computer Graphics
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 390x
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-2501">
+            <td>
+              CSE 2501
+            </td>
+            <td>
+              Professionalism and Ethics
+            </td>
+            <td>
+              1
+            </td>
+            <td>
+              CSE 2231, CSE 2321, CSE 2421
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-3321">
+            <td>
+              CSE 3321
+            </td>
+            <td>
+              Automate and Formal Lang.
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 2231, CSE 2331, CSE 2421
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-3341">
+            <td>
+              CSE 3341
+            </td>
+            <td>
+              Principles of Prog. Lang.
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 2231, CSE 2331, CSE 2421, CSE 390x
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-3232">
+            <td>
+              CSE 3232
+            </td>
+            <td>
+              Software Requirements Analysis
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 3901
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-4251">
+            <td>
+              CSE 4251
+            </td>
+            <td>
+              Unix Environment
+            </td>
+            <td>
+              1
+            </td>
+            <td>
+              CSE 2231
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-4252">
+            <td>
+              CSE 4252
+            </td>
+            <td>
+              Programming in C++
+            </td>
+            <td>
+              1
+            </td>
+            <td>
+              CSE 2231
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-4253">
+            <td>
+              CSE 4253
+            </td>
+            <td>
+              Programming in C#
+            </td>
+            <td>
+              1
+            </td>
+            <td>
+              CSE 2231
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-4254">
+            <td>
+              CSE 4254
+            </td>
+            <td>
+              Programming in Lisp
+            </td>
+            <td>
+              1
+            </td>
+            <td>
+              CSE 2231
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-4255">
+            <td>
+              CSE 4255
+            </td>
+            <td>
+              Programming in Perl
+            </td>
+            <td>
+              1
+            </td>
+            <td>
+              CSE 2231, CSE 2331, CSE 2421
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-4471">
+            <td>
+              CSE 4471
+            </td>
+            <td>
+              Information Security
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 2231 and CSE 2321
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-5234">
+            <td>
+              CSE 5234
+            </td>
+            <td>
+              Distributed Enterprise Computing
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 2431 or CSE 5431
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-5235">
+            <td>
+              CSE 5235
+            </td>
+            <td>
+              Applied Enterprise Architectures and Services
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 591x
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-5236">
+            <td>
+              CSE 5236
+            </td>
+            <td>
+              Mobile Developent
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 390x
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-5242">
+            <td>
+              CSE 5242
+            </td>
+            <td>
+              Advanced Database Management Systems
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 3241, CSE 2421
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-5243">
+            <td>
+              CSE 5243
+            </td>
+            <td>
+              Introduction to Data Mining
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 3241, 2331
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-5245">
+            <td>
+              CSE 5245
+            </td>
+            <td>
+             Introduction to Network Science
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 2331
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-5343">
+            <td>
+              CSE 5343
+            </td>
+            <td>
+              Compiler Design and Implementation
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 390x, CSE 3341
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-5351">
+            <td>
+              CSE 5351
+            </td>
+            <td>
+              Introduction to Cryptography
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 2331, STAT 3470
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-5361">
+            <td>
+              CSE 5361
+            </td>
+            <td>
+              Numerical Methods
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 2231, MATH 2568, MATH 1151
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-5432">
+            <td>
+              CSE 5432
+            </td>
+            <td>
+              Mobile Handset Systems and Networking
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 2451, CSE 2421
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-5433">
+            <td>
+              CSE 5433
+            </td>
+            <td>
+              Operating Systems Laboratory
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 2431, CSE 2451
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-5441">
+            <td>
+              CSE 5441
+            </td>
+            <td>
+              Introduction to Parallel Computing
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 2231, CSE 2321, CSE 2451, CSE 2421, MATH 2568,
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-5462">
+            <td>
+              CSE 5462
+            </td>
+            <td>
+              Network Programming
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 3461
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-5463">
+            <td>
+              CSE 5463
+            </td>
+            <td>
+              Introduction to Wireless Networking
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 3461
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-5472">
+            <td>
+              CSE 5472
+            </td>
+            <td>
+              Information Security Projects
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 390x and CSE 3461 or CSE 5471
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-5473">
+            <td>
+              CSE 5473
+            </td>
+            <td>
+              Network Security
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 3461
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-5522">
+            <td>
+              CSE 5522
+            </td>
+            <td>
+              Survey of AI 2
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 3521
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-5523">
+            <td>
+              CSE 5523
+            </td>
+            <td>
+              Machine Learning 
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 3521, STAT 3470
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-5524">
+            <td>
+              CSE 5524
+            </td>
+            <td>
+              Computer Vision for H-C Interaction
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 2331
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-5525">
+            <td>
+              CSE 5525
+            </td>
+            <td>
+              Foundations of Speech and Language Processing
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 3521, STAT 3470
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-5526">
+            <td>
+              CSE 5526
+            </td>
+            <td>
+              Introduction to Neural Networks
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 3521
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-5531">
+            <td>
+              CSE 5531
+            </td>
+            <td>
+              Introduction to Cognitive Science
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              At least 12 sem-cr-hrs equivalent from at least two of the following four areas: computer science, linguistics, philosophy, and psychology; at most 6 sem-cr-hrs can come from any one area 
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-5542">
+            <td>
+              CSE 5542
+            </td>
+            <td>
+              Real-Time Rendering
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 3901, MATH 2568
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-5543">
+            <td>
+              CSE 5543
+            </td>
+            <td>
+              Geometric Modeling
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              MATH 2568
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-5544">
+            <td>
+              CSE 5544
+            </td>
+            <td>
+              Introduction to Scientific Visualization
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 5361 or CSE 5541
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-5545">
+            <td>
+              CSE 5545
+            </td>
+            <td>
+              Advanced Computer Graphics
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 5541
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-5911">
+            <td>
+              CSE 5911
+            </td>
+            <td>
+              Capstone: Software Applications
+            </td>
+            <td>
+              4
+            </td>
+            <td>
+              CSE 2501, CSE 390x, CSE 3231
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-5912">
+            <td>
+              CSE 5912
+            </td>
+            <td>
+              Capstone: Game Design
+            </td>
+            <td>
+              4
+            </td>
+            <td>
+              CSE 2501, CSE 390x, CSE 3541
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-5913">
+            <td>
+              CSE 5913
+            </td>
+            <td>
+              Capstone: Computer Animation
+            </td>
+            <td>
+              4
+            </td>
+            <td>
+              CSE 2501, CSE 390x, CSE 3541
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-5914">
+            <td>
+              CSE 5914
+            </td>
+            <td>
+              Capstone: Knowledge-Based Systems
+            </td>
+            <td>
+              4
+            </td>
+            <td>
+              CSE 2501, CSE 390x, CSE 3521
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-5915">
+            <td>
+              CSE 5915
+            </td>
+            <td>
+              Capstone: Information Systems
+            </td>
+            <td>
+              4
+            </td>
+            <td>
+              CSE 2501, CSE 390x, CSE 3241
+            </td>
+            <td>
+            </td>
+          </tr>
+        </table>
+    </div>
+    <div id="semesterDiv" class="col-sm-5 col-md-4">
+        <table class="options-table">
+          <tr>
+            <th>
+              Course ID
+            </th>
+            <th>
+              Title
+            </th>
+            <th>
+              Cr-hrs
+            </th>
+            <th>
+              Reqs
+            </th>
+            <th>
+              Co-reqs
+            </th>
+          </tr>
+          <tr class="options" id="options-1100">
+            <td>
+              Engr 1100
+            </td>
+            <td>
+              Engineering Survey
+            </td>
+            <td>
+              1
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-1181">
+            <td>
+              Engr 1181
+            </td>
+            <td>
+              Intro to Engineering I
+            </td>
+            <td>
+              2
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-1151">
+            <td>
+              Math 1151
+            </td>
+            <td>
+              Calculus I
+            </td>
+            <td>
+              5
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-1250">
+            <td>
+              Phys 1250
+            </td>
+            <td>
+              Physics I
+            </td>
+            <td>
+              5
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-1182">
+            <td>
+              Engr 1182
+            </td>
+            <td>
+              Introduction to Engineering II
+            </td>
+            <td>
+              2
+            </td>
+            <td>
+              Engr 1181
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-1172">
+            <td>
+              Math 1172
+            </td>
+            <td>
+              Engineering Calculus II
+            </td>
+            <td>
+              5
+            </td>
+            <td>
+              Math 1151
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-WL1">
+            <td>
+              Gen Ed
+            </td>
+            <td>
+              Writing Level 1
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-CAIE">
+            <td>
+              Gen Ed
+            </td>
+            <td>
+              Culture & Ideas: Ethics
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-3470">
+            <td>
+              Stat 3470
+            </td>
+            <td>
+              Probability and Statistics
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              Math 1172
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-2568">
+            <td>
+              Math 2568
+            </td>
+            <td>
+              Linear Algebra
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              Math 1172 
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-SCE">
+            <td>
+              Science
+            </td>
+            <td>
+              Science Elective: Bio,Chem,Phy or equiv.
+            </td>
+            <td>
+              5
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-2060">
+            <td>
+              ECE 2060
+            </td>
+            <td>
+              Electrical and Computer Engineering
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 2221, Math 1172, Physics 1250, Engr 1182
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-3345">
+            <td>
+              Math 3345
+            </td>
+            <td>
+              Discrete Mathematics: Logic
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 2321, Math 1172
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-WL2">
+            <td>
+              Gen Ed
+            </td>
+            <td>
+              Writing Level 2
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              Writing 1
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-2020">
+            <td>
+              ECE 2020
+            </td>
+            <td>
+              Electrical and Computer Engineering
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              CSE 2221, Engr 1182, Math 1172, Physics 1250
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-SS1">
+            <td>
+              Gen Ed
+            </td>
+            <td>
+              Social Science 1
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-ART">
+            <td>
+              Gen Ed
+            </td>
+            <td>
+              Arts
+            </td>
+            <td>
+              5
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-HIS">
+            <td>
+              Gen Ed
+            </td>
+            <td>
+              Historical Study
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-MSE">
+            <td>
+              Math/Stat
+            </td>
+            <td>
+              Mathematics/Statistics Elective
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-LIT">
+            <td>
+              Gen Ed
+            </td>
+            <td>
+              Literature
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr class="options" id="options-SS2">
+            <td>
+              Gen Ed
+            </td>
+            <td>
+              Social Science 2
+            </td>
+            <td>
+              5
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+          </tr>
+        </table>
+    </div>
+  </div>
+  
 </body>
 
 </html>
 
+
+
 <script type="text/javascript">
-  function checkClassReq(a){
-      $("#Credits1 h3").html($("#cse1223").parents('ul').attr('id').replace(/\D/g,''));
-      $("#Credits1 h3").html("FUCK");
-      var cse1223 = parseInt($("#cse1223").parents('ul').attr('id').replace(/\D/g,''));
-      var cse2221 = parseInt($("#cse2221").parents('ul').attr('id').replace(/\D/g,''));
-      if(cse2221 > cse1223){
-        $("#alertes").innerhtml("<p>
-          </p>");
-      }
-  }
 $(document).ready(function(){
   var count = 0;
   $("#semester1").find('li').each(function(){
@@ -908,7 +2351,6 @@ $(document).ready(function(){
     count += current;
   });
   $("#Credits8 h3").html(count);
-  checkClassReq("wat");
 });
 $("#semester1").sortable({
     connectWith: "#semester1, #semester2, #semester3, #semester4, #semester5, #semester6, #semester7, #semester8",
